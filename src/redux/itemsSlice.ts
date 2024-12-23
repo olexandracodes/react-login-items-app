@@ -27,7 +27,7 @@ const itemsSlice = createSlice({
 	initialState,
 	reducers: {
 		addItem: (state, action: PayloadAction<{ id: number; name: string }>) => {
-			state.items.push(action.payload);
+			state.items.unshift(action.payload); 
 		},
 		editItem: (state, action: PayloadAction<{ id: number; name: string }>) => {
 			const index = state.items.findIndex(
