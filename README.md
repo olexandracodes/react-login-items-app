@@ -28,12 +28,12 @@ You can see the design and layout of the app with the following images:
 
 - `src/`: Source code.
   - `components/`
-   - `ItemDialog.tsx`
-   - `LoginForm.tsx`
-   - `Pagination.jsx`
+    - `ItemDialog.tsx`
+    - `LoginForm.tsx`
+    - `Pagination.jsx`
   - `pages/`
-   - `LoginPage.tsx`
-   - `ItemsPage.tsx`
+    - `LoginPage.tsx`
+    - `ItemsPage.tsx`
   - `redux/`
     - `store.ts`
     - `userSlice.ts`
