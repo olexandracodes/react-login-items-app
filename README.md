@@ -34,7 +34,7 @@ You can see the design and layout of the app with the following images:
   - `pages/`
    - `LoginPage.tsx`
    - `ItemsPage.tsx`
-  - `store/`
+  - `redux/`
     - `store.ts`
     - `userSlice.ts`
     - `itemsSlice.ts`
