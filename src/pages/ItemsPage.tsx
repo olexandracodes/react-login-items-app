@@ -3,23 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store.ts";
 import { addItem, editItem } from "../redux/itemsSlice.ts";
 import { logout } from "../redux/userSlice.ts";
-import {
-	Box,
-	Button,
-	Card,
-	CardContent,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogTitle,
-	TextField,
-	Typography,
-} from "@mui/material";
+import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Grid from "@mui/material/Grid2";
 import { useNavigate } from "react-router-dom";
 import PaginationComponent from "../components/Pagination.tsx";
+import ItemDialog from "../components/ItemDialog.tsx";
 
 const ItemsPage: React.FC = () => {
 	const dispatch = useDispatch();
@@ -111,28 +101,19 @@ const ItemsPage: React.FC = () => {
 				))}
 			</Grid>
 
-			<PaginationComponent 
-				totalPages={totalPages} 
-				currentPage={currentPage} 
-				onPageChange={(_, page) => setCurrentPage(page)} 
+			<PaginationComponent
+				totalPages={totalPages}
+				currentPage={currentPage}
+				onPageChange={(_, page) => setCurrentPage(page)}
 			/>
 
-			<Dialog open={open} onClose={() => toggleDialog()}>
-				<DialogTitle>{itemData.id ? "Edit Item" : "Add Item"}</DialogTitle>
-				<DialogContent>
-					<TextField
-						sx={{ marginTop: 1 }}
-						label="Item Name"
-						fullWidth
-						value={itemData.name}
-						onChange={(e) => setItemData({ ...itemData, name: e.target.value })}
-					/>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={() => toggleDialog()}>Cancel</Button>
-					<Button onClick={handleSave}>Save</Button>
-				</DialogActions>
-			</Dialog>
+			<ItemDialog
+				open={open}
+				itemData={itemData}
+				onClose={() => toggleDialog()}
+				onSave={handleSave}
+				onChange={(e) => setItemData({ ...itemData, name: e.target.value })}
+			/>
 		</Box>
 	);
 };
