@@ -11,11 +11,11 @@ import {
 	DialogActions,
 	DialogContent,
 	DialogTitle,
-	Grid,
 	Pagination,
 	TextField,
 	Typography,
 } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 
 const ItemsPage: React.FC = () => {
 	const dispatch = useDispatch();
@@ -59,7 +59,7 @@ const ItemsPage: React.FC = () => {
 
 			<Grid container spacing={4} sx={{ marginTop: 2 }}>
 				{currentItems.map((item) => (
-					<Grid item xs={6} sm={6} md={3} key={item.id}>
+					<Grid size={{ xs: 6, sm: 6, md: 3 }} key={item.id}>
 						<Card
 							sx={{ display: "flex", flexDirection: "column", height: "100%" }}
 						>
