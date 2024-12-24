@@ -7,6 +7,7 @@ import {
 	TextField,
 	Button,
 } from "@mui/material";
+import { Field, Form, Formik } from "formik";
 
 interface ItemDialogProps {
 	open: boolean;
@@ -27,18 +28,32 @@ const ItemDialog: React.FC<ItemDialogProps> = ({
 		<Dialog open={open} onClose={onClose}>
 			<DialogTitle>{itemData.id ? "Edit Item" : "Add Item"}</DialogTitle>
 			<DialogContent>
-				<TextField
-					sx={{ marginTop: 1 }}
-					label="Item Name"
-					fullWidth
-					value={itemData.name}
-					onChange={onChange}
-				/>
+				<Formik
+					initialValues={{ name: itemData.name }}
+					onSubmit={() => {
+						onSave();
+					}}
+					enableReinitialize
+				>
+					{({ handleSubmit, values }) => (
+						<Form onSubmit={handleSubmit}>
+							<Field
+								as={TextField}
+								sx={{ marginTop: 1 }}
+								name="name"
+								label="Item Name"
+								fullWidth
+								value={values.name}
+								onChange={onChange}
+							/>
+							<DialogActions>
+								<Button onClick={onClose}>Cancel</Button>
+								<Button type="submit">Save</Button>
+							</DialogActions>
+						</Form>
+					)}
+				</Formik>
 			</DialogContent>
-			<DialogActions>
-				<Button onClick={onClose}>Cancel</Button>
-				<Button onClick={onSave}>Save</Button>
-			</DialogActions>
 		</Dialog>
 	);
 };

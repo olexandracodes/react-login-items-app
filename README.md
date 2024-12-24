@@ -1,46 +1,91 @@
-# Getting Started with Create React App
+# React SPA with Login and Item Management
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a small Single Page Application (SPA) built with React, Redux Toolkit, and Material UI. The app features a user login page and an item management page where users can add and edit items.
 
-## Available Scripts
+## Screenshots
+You can see the design and layout of the app with the following images:
 
-In the project directory, you can run:
+<div align="center">
+  <img src="screenshots/login_page.png" alt="Login page" width="400"/>
+  <img src="screenshots/mobile_login_page.png" alt="Mobile login page" width="200"/>
+</div>
 
-### `npm start`
+<div align="center">
+  <img src="screenshots/items_page.png" alt="Items page" width="400"/>
+  <img src="screenshots/mobile_items_page.png" alt="Mobile items page" width="200"/>
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
+- **Login Page**: A simple form for users to log in using email and password.
+- **Items Page**: Displays a list of items with options to add and edit.
+- **State Management**: Uses Redux Toolkit for managing user login state and item data.
+- **Material UI**: For styling and UI components such as forms, buttons, and dialogs.
+- **Formik + Yup**: For form handling and validation.
+- **Routing**: React Router is used for page navigation.
+- **Testing**: Basic tests with Jest and React Testing Library.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Folder Structure
 
-### `npm test`
+src/
+├── components/ 
+│ ├── ItemDialog.tsx 
+│ ├── LoginForm.tsx 
+│ ├── Pagination.jsx 
+├── pages/ 
+│ ├── LoginPage.tsx 
+│ ├── ItemsPage.tsx 
+├── store/ 
+│ ├── store.ts 
+│ ├── userSlice.ts 
+│ ├── itemsSlice.ts 
+├── App.tsx 
+├── App.test.ts
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Components
+### `ItemDialog.tsx`
+A dialog box for adding and editing items. It uses **Formik** to manage form data and **Material UI** components to display the dialog and form fields. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `LoginForm.tsx`
+A form for logging in. It uses **Formik** for form handling and **Yup** for validation to ensure the email and password are entered correctly.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `Pagination.jsx`
+A simple component to handle pagination of items on the **Items Page**. This component is basic and works as a placeholder for more advanced features.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `LoginPage.tsx`
+The page where users log in. If the user is already logged in, they are redirected to the **Items Page**.
 
-### `npm run eject`
+### `ItemsPage.tsx`
+The page that shows a list of items. Users can add new items or edit existing ones using a dialog form.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Redux State Management
+### `userSlice.ts`
+Handles the login state, such as checking if the user is logged in (`isLoggedIn`).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `itemsSlice.ts`
+Handles the items list. It includes actions for adding and editing items in the list.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### `store.ts`
+Sets up the **Redux store** and combines all slices (user and items) into one store.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Styling
+The app uses **Material UI** for consistent design. It includes components like buttons, text fields, and dialog boxes. Some styles are applied using the **sx** prop from **Material UI** components, and others are customized using the `styled` utility.
 
-## Learn More
+## Testing
+Basic tests are included with **Jest** and **React Testing Library** to test the core functionality:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **LoginPage.test.ts**: Tests rendering of the login form.
+- **App.test.ts**: Tests rendering of the App component.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+## How to Run
+
+1. Clone this repository.
+2. Navigate to the project directory.
+3. Run `npm install` to install dependencies.
+4. Run `npm start` to start the development server.
+5. Open your browser and go to `http://localhost:3000` to view the app.
+
+## Author
+ 
+[Olexandra Kunytska](https://github.com/olexandracodes) - Frontend developer

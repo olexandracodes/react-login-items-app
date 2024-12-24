@@ -1,16 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Formik, Field, Form } from "formik";
-import * as Yup from "yup";
+import { Formik } from "formik";
 import { login } from "../redux/userSlice.ts";
-import { TextField, Button, Box, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/system";
-
-const validationSchema = Yup.object({
-  email: Yup.string().email("Invalid email address").required("Required"),
-  password: Yup.string().required("Password is required"),
-});
+import { LoginForm, validationSchema } from "../components/LoginForm.tsx"; 
 
 const Container = styled(Box)`
   display: flex;
@@ -34,26 +29,13 @@ const Title = styled(Typography)`
   margin-bottom: 1.5rem;
 `;
 
-const SubmitButton = styled(Button)`
-  background-color: #fe5805;
-  width: 100%;
-  &:hover {
-    background-color: #e04d00;
-  }
-`;
-
-const TestButton = styled(Button)`
-  width: 100%;
-  margin-top: 1rem;
-`;
-
 const LoginPage: React.FC = () => {
   const dispatch = useDispatch();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = (values: { email: string; password: string }) => {
-    dispatch(login({ email: values.email, password: values.password }));
-    history("/items");
+    dispatch(login(values));
+    navigate("/items");
   };
 
   return (
@@ -62,50 +44,16 @@ const LoginPage: React.FC = () => {
         <Title variant="h4">Login</Title>
         <Formik
           initialValues={{ email: "", password: "" }}
-          validationSchema={validationSchema}
+          validationSchema={validationSchema}  
           onSubmit={handleLogin}
         >
-          {({ touched, errors, setFieldValue }) => (
-            <Form>
-              <Box sx={{ marginBottom: 2 }}>
-                <Field
-                  as={TextField}
-                  name="email"
-                  label="Email"
-                  variant="outlined"
-                  fullWidth
-                  margin="normal"
-                  error={touched.email && Boolean(errors.email)}
-                  helperText={touched.email && errors.email}
-                />
-              </Box>
-              <Box sx={{ marginBottom: 2 }}>
-                <Field
-                  as={TextField}
-                  name="password"
-                  label="Password"
-                  type="password"
-                  variant="outlined"
-                  fullWidth
-                  margin="normal"
-                  error={touched.password && Boolean(errors.password)}
-                  helperText={touched.password && errors.password}
-                />
-              </Box>
-              <SubmitButton type="submit" variant="contained">
-                Login
-              </SubmitButton>
-
-              <TestButton
-                type="button"
-                onClick={() => {
-                  setFieldValue("email", "testuser@example.com");
-                  setFieldValue("password", "password123");
-                }}
-              >
-                Test
-              </TestButton>
-            </Form>
+          {(formikProps) => (
+            <LoginForm
+              touched={formikProps.touched}
+              errors={formikProps.errors}
+              setFieldValue={formikProps.setFieldValue}
+              handleSubmit={formikProps.handleSubmit}
+            />
           )}
         </Formik>
       </FormContainer>

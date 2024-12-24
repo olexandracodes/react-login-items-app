@@ -19,7 +19,7 @@ const ItemsPage: React.FC = () => {
 	const [open, setOpen] = useState(false);
 	const [itemData, setItemData] = useState({ id: 0, name: "" });
 	const [currentPage, setCurrentPage] = useState(1);
-	const itemsPerPage = 20;
+	const itemsPerPage = 12;
 
 	const toggleDialog = (
 		item: { id: number; name: string } = { id: 0, name: "" }
