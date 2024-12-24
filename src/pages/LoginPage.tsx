@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import { login } from "../redux/userSlice.ts";
+import { login } from "../redux/userSlice.ts"; 
 import { TextField, Button, Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/system";
@@ -47,7 +47,7 @@ const LoginPage: React.FC = () => {
 	const history = useNavigate();
 
 	const handleLogin = (values: { email: string; password: string }) => {
-		dispatch(login(values.email));
+		dispatch(login({ email: values.email, password: values.password }));
 		history("/items");
 	};
 
@@ -60,7 +60,7 @@ const LoginPage: React.FC = () => {
 					validationSchema={validationSchema}
 					onSubmit={handleLogin}
 				>
-					{() => (
+					{({ touched, errors }) => (
 						<Form>
 							<Box sx={{ marginBottom: 2 }}>
 								<Field
@@ -70,8 +70,9 @@ const LoginPage: React.FC = () => {
 									variant="outlined"
 									fullWidth
 									margin="normal"
+									error={touched.email && Boolean(errors.email)}
+									helperText={touched.email && errors.email}
 								/>
-								<ErrorMessage name="email" component="div" />
 							</Box>
 							<Box sx={{ marginBottom: 2 }}>
 								<Field
@@ -82,8 +83,9 @@ const LoginPage: React.FC = () => {
 									variant="outlined"
 									fullWidth
 									margin="normal"
+									error={touched.password && Boolean(errors.password)}
+									helperText={touched.password && errors.password}
 								/>
-								<ErrorMessage name="password" component="div" />
 							</Box>
 							<SubmitButton type="submit" variant="contained">
 								Login

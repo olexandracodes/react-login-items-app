@@ -10,7 +10,7 @@ import { CssBaseline } from "@mui/material";
 import LoginPage from "./pages/LoginPage.tsx";
 import ItemsPage from "./pages/ItemsPage.tsx";
 import { useSelector } from "react-redux";
-import { RootState } from "./redux/store";
+import { RootState } from "./redux/store.ts";
 
 const theme = createTheme({
 	palette: {
