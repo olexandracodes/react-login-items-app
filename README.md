@@ -6,13 +6,13 @@ This is a small Single Page Application (SPA) built with React, Redux Toolkit, a
 You can see the design and layout of the app with the following images:
 
 <div align="center">
-  <img src="screenshots/login_page.png" alt="Login page" width="400"/>
-  <img src="screenshots/mobile_login_page.png" alt="Mobile login page" width="200"/>
+  <img src="./src/screenshots/login_page.png" alt="Login page" width="400"/>
+  <img src="./src/screenshots/mobile_login_page.png" alt="Mobile login page" width="200"/>
 </div>
 
 <div align="center">
-  <img src="screenshots/items_page.png" alt="Items page" width="400"/>
-  <img src="screenshots/mobile_items_page.png" alt="Mobile items page" width="200"/>
+  <img src="./src/screenshots/items_page.png" alt="Items page" width="400"/>
+  <img src="./src/screenshots/mobile_items_page.png" alt="Mobile items page" width="200"/>
 </div>
 
 ## Features
