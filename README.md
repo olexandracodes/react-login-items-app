@@ -26,20 +26,21 @@ You can see the design and layout of the app with the following images:
 
 ## Folder Structure
 
-src/
-├── components/ 
-│ ├── ItemDialog.tsx 
-│ ├── LoginForm.tsx 
-│ ├── Pagination.jsx 
-├── pages/ 
-│ ├── LoginPage.tsx 
-│ ├── ItemsPage.tsx 
-├── store/ 
-│ ├── store.ts 
-│ ├── userSlice.ts 
-│ ├── itemsSlice.ts 
-├── App.tsx 
-├── App.test.ts
+- `src/`: Source code.
+  - `components/`
+   - `ItemDialog.tsx`
+   - `LoginForm.tsx`
+   - `Pagination.jsx`
+  - `pages/`
+   - `LoginPage.tsx`
+   - `ItemsPage.tsx`
+  - `store/`
+    - `store.ts`
+    - `userSlice.ts`
+    - `itemsSlice.ts`
+  - `App.tsx`
+  - `App.test.ts`
+  - `LoginPage.test.ts`
 
 
 ## Components
